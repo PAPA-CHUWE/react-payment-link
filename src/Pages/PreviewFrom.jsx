@@ -69,7 +69,7 @@ const PreviewFrom = () => {
   async function makePaymentRequest() {
     try {
       const response = await fetch(
-        `https://192.168.14.87:8080/api/payment/${paymentId}`
+        `https://localhost:8080/api/payment/${paymentId}`
       );
       if (response.ok) {
         const data = await response.json();
