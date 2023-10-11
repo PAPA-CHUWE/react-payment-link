@@ -1,14 +1,7 @@
 // eslint-disable-next-line
 import React, { useEffect, useState } from "react";
 import {
-  Typography,
-  Button,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
   InputLabel,
-  MenuItem,
   TextField,
   Snackbar,
   IconButton,
@@ -17,7 +10,7 @@ import { useLocation } from "react-router";
 import "mdb-react-ui-kit/dist/css/mdb.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import Select from "react-select";
-import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
+
 import {
   MDBContainer,
   MDBCol,
@@ -43,8 +36,6 @@ const PreviewFrom = () => {
   const [dateOfTrans, setdateOfTrans] = useState("");
   const [supplierName, setSupplierName] = useState("");
   const [status, setStatus] = useState("");
-  const [paymentOption, setPaymentOption] = useState(null);
-  const [openDialog, setOpenDialog] = React.useState(false);
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [accountNumber, setAccountNumber] = useState("");
@@ -124,22 +115,22 @@ const PreviewFrom = () => {
   );
   return (
     <MDBContainer className="py-5">
-      <div className="d-flex justify-content-between align-items-center mb-5">
-        <div className="d-flex flex-row align-items-center">
-          <h4 className="text-uppercase mt-1">Eligible</h4>
+      <div className="mb-5 d-flex justify-content-between align-items-center">
+        <div className="flex-row d-flex align-items-center">
+          <h4 className="mt-1 text-uppercase">Eligible</h4>
           <span className="ms-2 me-3">Pay</span>
         </div>
         <a href="#!">Cancel and return to the website</a>
       </div>
       <MDBRow
-        className="my-2 d-flex justify-content-between mt-1"
+        className="my-2 mt-1 d-flex justify-content-between"
         style={{ gap: "5vh" }}
       >
         <MDBCol
           md="5"
           lg="5"
           xl="5"
-          className="shadow-lg rounded-lg hover:shadow-lg"
+          className="rounded-lg shadow-lg hover:shadow-lg"
         >
           <div
             className="p-3 text-center"
@@ -148,51 +139,57 @@ const PreviewFrom = () => {
             }}
           >
             <span className="fw-bold text-uppercase ">Order Summary</span>
-            <div className="d-flex justify-content-between mt-2">
+            <div className="mt-2 d-flex justify-content-between">
               <span>Payment Id</span> <span>{paymentId}</span>
             </div>
-            <div className="d-flex justify-content-between mt-2">
+            <div className="mt-2 d-flex justify-content-between">
               <span>Order Id </span> <span>{orderId}</span>
             </div>
-            <div className="d-flex justify-content-between mt-2">
+            <div className="mt-2 d-flex justify-content-between">
+              <span>Customer Name</span> <span>{customerName}</span>
+            </div>
+            <div className="mt-2 d-flex justify-content-between">
               <span>Customer Contact</span> <span>{customerPhone}</span>
             </div>
-            <div className="d-flex justify-content-between mt-2">
+            <div className="mt-2 d-flex justify-content-between">
+              <span>Product Purchased</span> <span>{productName}</span>
+            </div>
+            <div className="mt-2 d-flex justify-content-between">
               <span>Supplier </span> <span>{supplierName}</span>
             </div>
-            <div className="d-flex justify-content-between mt-2">
+            <div className="mt-2 d-flex justify-content-between">
               <span>PickUp Address </span> <span>{pickupAddress}</span>
             </div>
-            <div className="d-flex justify-content-between mt-2">
+            <div className="mt-2 d-flex justify-content-between">
               <span>Delivery Address </span> <span>{deliveryAddress}</span>
             </div>
-            <div className="d-flex justify-content-between mt-2">
+            <div className="mt-2 d-flex justify-content-between">
               <span>Delivery Type </span> <span>{deliveryType}</span>
             </div>
-            <div className="d-flex justify-content-between mt-2">
+            <div className="mt-2 d-flex justify-content-between">
               <span>Date Of Transactions </span> <span>{formattedDate}</span>
             </div>
-            <div className="d-flex justify-content-between mt-2">
+            <div className="mt-2 d-flex justify-content-between">
               <span>Status Of Payment </span> <span>{status}</span>
             </div>
             <hr />
-            <div className="d-flex justify-content-between mt-2">
+            <div className="mt-2 d-flex justify-content-between">
               <span className="lh-sm">Initial Amount</span>
               <span>${amount || "0.00"}</span>
             </div>
-            <div className="d-flex justify-content-between mt-2">
+            <div className="mt-2 d-flex justify-content-between">
               <span className="lh-sm">Tax (VAT)</span>
               <span>${0 || "0.00"}</span>
             </div>
             <hr />
-            <div className="d-flex justify-content-between mt-2">
+            <div className="mt-2 d-flex justify-content-between">
               <span>Insurance Responsibility </span> <span>${0 || "0.00"}</span>
             </div>
-            <div className="d-flex justify-content-between mt-2">
+            <div className="mt-2 d-flex justify-content-between">
               <span>Discount(%)</span> <span>{0 || "0.00"}%</span>
             </div>
             <hr />
-            <div className="d-flex justify-content-between mt-2">
+            <div className="mt-2 d-flex justify-content-between">
               <span>Total Balance </span>{" "}
               <span class="text-success">${amount || "0.00"}</span>
             </div>
@@ -202,11 +199,11 @@ const PreviewFrom = () => {
           <h5 className="mb-0 text-success">${amount || "0.00"}</h5>
           <div>
             <div className="d-flex justify-content-between">
-              <div className="d-flex flex-row mt-1">
+              <div className="flex-row mt-1 d-flex">
                 <h6>Insurance Responsibility</h6>
                 <h6 className="fw-bold text-success ms-1">${0 || "0.00"}</h6>
               </div>
-              <div className="d-flex flex-row align-items-center text-primary">
+              <div className="flex-row d-flex align-items-center text-primary">
                 <span className="ms-1">Add Insurer card</span>
               </div>
             </div>
@@ -216,11 +213,11 @@ const PreviewFrom = () => {
             </p>
             <hr />
             <div className="d-flex justify-content-between align-items-center">
-              <div className="d-flex flex-row mt-1">
+              <div className="flex-row mt-1 d-flex">
                 <h6>Tax Balance</h6>
                 <h6 className="fw-bold text-success ms-1">${0 || "0.00"}</h6>
               </div>
-              <div className="d-flex flex-row align-items-center text-primary">
+              <div className="flex-row d-flex align-items-center text-primary">
                 <span className="ms-1">Add Payment card</span>
               </div>
             </div>
@@ -311,7 +308,9 @@ const PreviewFrom = () => {
                     }}
                     margin="normal"
                     value={address}
-                    onChange={(event) => setAddress(event.target.value.toUpperCase())}
+                    onChange={(event) =>
+                      setAddress(event.target.value.toUpperCase())
+                    }
                   />
 
                   <TextField
@@ -338,7 +337,9 @@ const PreviewFrom = () => {
                     }}
                     margin="normal"
                     value={accountNumber}
-                    onChange={(event) => setAccountNumber(event.target.value.toUpperCase())}
+                    onChange={(event) =>
+                      setAccountNumber(event.target.value.toUpperCase())
+                    }
                   />
                 </div>
               </MDBBtnGroup>
@@ -351,7 +352,7 @@ const PreviewFrom = () => {
               onClick={handlePay}
               className="my-2"
             >
-              <div className="d-flex justify-content-between mt-1 text-uppercase">
+              <div className="mt-1 d-flex justify-content-between text-uppercase">
                 <span>Proceed to payment</span> <span>${amount || "0.00"}</span>
               </div>
             </MDBBtn>
