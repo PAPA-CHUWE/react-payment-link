@@ -60,7 +60,7 @@ const PreviewFrom = () => {
   async function makePaymentRequest() {
     try {
       const response = await fetch(
-        `http://localhost:8080/api/payment/${paymentId}`
+        `http://ec2-34-254-29-81.eu-west-1.compute.amazonaws.com:8080/api/payment/${paymentId}`
       );
       if (response.ok) {
         const data = await response.json();
