@@ -1,11 +1,6 @@
 // eslint-disable-next-line
 import React, { useEffect, useState } from "react";
-import {
-  InputLabel,
-  TextField,
-  Snackbar,
-  IconButton,
-} from "@mui/material";
+import { InputLabel, TextField, Snackbar, IconButton } from "@mui/material";
 import { useLocation } from "react-router";
 import "mdb-react-ui-kit/dist/css/mdb.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -60,7 +55,7 @@ const PreviewFrom = () => {
   async function makePaymentRequest() {
     try {
       const response = await fetch(
-        `http://ec2-34-254-29-81.eu-west-1.compute.amazonaws.com:8080/api/payment/${paymentId}`
+        `https://ec2-34-254-29-81.eu-west-1.compute.amazonaws.com:8080/api/payment/${paymentId}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -114,22 +109,25 @@ const PreviewFrom = () => {
     </React.Fragment>
   );
   return (
-    <MDBContainer className="py-5">
-      <div className="mb-5 d-flex justify-content-between align-items-center">
-        <div className="flex-row d-flex align-items-center">
-          <h4 className="mt-1 text-uppercase">Eligible</h4>
-          <span className="ms-2 me-3">Pay</span>
-        </div>
-        <a href="#!">Cancel and return to the website</a>
-      </div>
+    <MDBContainer className="content-center py-5 text-center md:container md:mx-auto">
+      <MDBRow className="content-center my-2 mt-1 text-center">
+        <MDBCol md="7" lg="7" xl="5" className="mb-4 mb-md-0">
+          <div className="mb-5 d-flex justify-content-between align-items-center">
+            <div className="flex-row d-flex align-items-center">
+              <h4 className="mt-1 text-uppercase">Eligible</h4>
+              <span className="ms-2 me-3">Pay</span>
+            </div>
+          </div>
+        </MDBCol>
+      </MDBRow>
       <MDBRow
-        className="my-2 mt-1 d-flex justify-content-between"
+        className="content-center my-2 mt-1 text-center align-middle d-flex justify-content-between"
         style={{ gap: "5vh" }}
       >
         <MDBCol
-          md="5"
-          lg="5"
-          xl="5"
+          md="7"
+          lg="7"
+          xl="6"
           className="rounded-lg shadow-lg hover:shadow-lg"
         >
           <div
