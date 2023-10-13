@@ -56,12 +56,10 @@ const PreviewFrom = () => {
     try {
       const response = await fetch(
         `http://ec2-34-254-29-81.eu-west-1.compute.amazonaws.com:8080/api/payment/${paymentId}`,
-        {
-          mode: 'cors',
-        }
       );
       if (response.ok) {
         const data = await response.json();
+        console.log(data)
         setOrderId(data.orderId);
         setCustomerName(data.customerName);
         setSupplierName(data.supplierName);
