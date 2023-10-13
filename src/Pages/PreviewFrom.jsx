@@ -55,7 +55,7 @@ const PreviewFrom = () => {
   async function makePaymentRequest() {
     try {
       const response = await fetch(
-        `https://ec2-34-254-29-81.eu-west-1.compute.amazonaws.com:8080/api/payment/${paymentId}`
+        `http://ec2-34-254-29-81.eu-west-1.compute.amazonaws.com:8080/api/payment/${paymentId}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -189,12 +189,15 @@ const PreviewFrom = () => {
             <hr />
             <div className="mt-2 d-flex justify-content-between">
               <span>Total Balance </span>{" "}
-              <span class="text-success">${amount || "0.00"}</span>
+              <span className="text-success">${amount || "0.00"}</span>
             </div>
           </div>
         </MDBCol>
         <MDBCol md="7" lg="7" xl="5" className="mb-4 mb-md-0">
-          <h5 className="mb-0 text-success">${amount || "0.00"}</h5>
+          <h5 className="mb-0 text-success d-flex justify-content-between">
+            {" "}
+            <span>Total Balance </span> ${amount || "0.00"}
+          </h5>
           <div>
             <div className="d-flex justify-content-between">
               <div className="flex-row mt-1 d-flex">
@@ -223,7 +226,7 @@ const PreviewFrom = () => {
               Insurance claim and all neccessary dependencies will be submitted
               to your insurer for the covered portion of this order.
             </p>
-            <div class="d-flex flex-column mb-3 text-center">
+            <div className="mb-3 text-center d-flex flex-column">
               <MDBBtnGroup vertical aria-label="Vertical button group">
                 <div
                   style={{
