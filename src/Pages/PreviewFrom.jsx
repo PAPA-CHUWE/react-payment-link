@@ -56,9 +56,6 @@ const PreviewFrom = () => {
     try {
       const response = await fetch(
         `https://ec2-34-254-29-81.eu-west-1.compute.amazonaws.com:8080/api/payment/${paymentId}`,
-        {
-          mode: "no-cors",
-        }
       );
       if (response.ok) {
         const data = await response.json();
